@@ -1,11 +1,16 @@
 
+import { Suspense } from 'react'
 import './App.css'
+import Spinner from './components/Spinner'
+import Ticket from './components/Ticket'
 
 function App() {
 
+  const ticketData = fetch('../public/ticketData.json')
+    .then(res => res.json())
 
   return (
-    <>
+    <div className='max-w-400 mx-auto'>
       {/* Navbar */}
       <div className="navbar bg-base-100 shadow-sm px-[5%] flex justify-between">
         <div className="">
@@ -45,7 +50,7 @@ function App() {
       </div>
 
       {/* Body */}
-      <div className='mx-[5%] pt-5'>
+      <div className='px-[5%] py-10 bg-gray-100'>
         {/* Count Section  */}
         <section className='flex flex-col md:flex-row items-center justify-center gap-10 '>
           <div className='text-center py-16 w-full flex-1 rounded-md bg-linear-to-r from-[#632EE3] to-[#9F62F2]
@@ -64,7 +69,7 @@ function App() {
             <h1 className='text-5xl font-bold text-white'>0</h1>
           </div>
 
-           
+
           <div className='text-center w-full py-16 flex-1 rounded-md bg-linear-to-r from-[#54CF68] to-[#00827A] relative'>
             <div className="absolute
              inset-0
@@ -77,10 +82,34 @@ function App() {
             <h1 className='text-5xl font-bold text-white'>0</h1>
           </div>
         </section >
+
+
+
+
+
+        {/* Ticket Show Section */}
+        <section className='mt-10 grid grid-cols-4'>
+          {/* Customer Tickets */}
+          <div className='col-span-3'>
+            <h2 className='font-bold text-gray-600 text-lg'>Customer Tickets</h2>
+
+            <Suspense fallback={<Spinner></Spinner>}>
+              <Ticket ticketData={ticketData}></Ticket>
+            </Suspense>
+
+          </div>
+
+          {/* Task Status */}
+          <div>
+            <h2 className='font-bold text-gray-600 text-lg'>Tast Status</h2>
+          </div>
+        </section>
+
+
       </div >
 
 
-    </>
+    </div>
   )
 }
 

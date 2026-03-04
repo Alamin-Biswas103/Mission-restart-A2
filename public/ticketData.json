@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1001,
+    "title": "Login not working",
+    "description": "User cannot log in with correct credentials; problem occurs on multiple devices and browsers consistently.",
+    "customer": "Rahim Uddin",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-20"
+  },
+  {
+    "id": 1002,
+    "title": "Payment failed",
+    "description": "Payment fails repeatedly during checkout even with valid card details, preventing completion of customer orders.",
+    "customer": "Karim Ahmed",
+    "priority": "HIGH PRIORITY",
+    "status": "In Progress",
+    "createdAt": "2026-02-21"
+  },
+  {
+    "id": 1003,
+    "title": "UI alignment issue",
+    "description": "Buttons and text fields overlap on small screen devices, making the interface difficult to navigate properly.",
+    "customer": "Nusrat Jahan",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-22"
+  },
+  {
+    "id": 1004,
+    "title": "Password reset email not received",
+    "description": "Customer requests password reset but never receives email; possibly caused by spam filters or system delays.",
+    "customer": "Tanvir Hasan",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Resolved",
+    "createdAt": "2026-02-22"
+  },
+  {
+    "id": 1005,
+    "title": "App crashes on launch",
+    "description": "Mobile application crashes immediately upon opening on both Android and iOS, preventing users from accessing content.",
+    "customer": "Sadia Islam",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-23"
+  },
+  {
+    "id": 1006,
+    "title": "Slow page load",
+    "description": "Dashboard loads very slowly during peak hours, causing frustration and reducing overall productivity for users.",
+    "customer": "Mehedi Hasan",
+    "priority": "MEDIUM PRIORITY",
+    "status": "In Progress",
+    "createdAt": "2026-02-23"
+  },
+  {
+    "id": 1007,
+    "title": "Profile update not saving",
+    "description": "Changes in profile information such as phone number and name are not saved after submission successfully.",
+    "customer": "Farzana Akter",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-24"
+  },
+  {
+    "id": 1008,
+    "title": "Email notifications delayed",
+    "description": "System-generated notification emails arrive several hours late, causing customers to miss timely updates and alerts.",
+    "customer": "Arif Hossain",
+    "priority": "LOW PRIORITY",
+    "status": "Resolved",
+    "createdAt": "2026-02-24"
+  },
+  {
+    "id": 1009,
+    "title": "Search not returning results",
+    "description": "Search feature returns no results even for correct and frequently used keywords, frustrating users significantly.",
+    "customer": "Shahin Alam",
+    "priority": "HIGH PRIORITY",
+    "status": "In Progress",
+    "createdAt": "2026-02-25"
+  },
+  {
+    "id": 1010,
+    "title": "Incorrect invoice amount",
+    "description": "Invoice total does not match order summary, creating confusion and trust issues for the customer immediately.",
+    "customer": "Jannatul Ferdous",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-25"
+  },
+  {
+    "id": 1011,
+    "title": "Unable to upload files",
+    "description": "Customers cannot upload documents or images due to timeout errors, affecting both small and large file sizes.",
+    "customer": "Imran Khan",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-26"
+  },
+  {
+    "id": 1012,
+    "title": "Logout button missing",
+    "description": "Logout option is missing in navigation menu, preventing users from securely signing out after finishing sessions.",
+    "customer": "Rumana Begum",
+    "priority": "LOW PRIORITY",
+    "status": "Resolved",
+    "createdAt": "2026-02-26"
+  },
+  {
+    "id": 1013,
+    "title": "Two-factor authentication error",
+    "description": "OTP codes are rejected even when entered correctly within valid time, blocking users from logging into accounts.",
+    "customer": "Hasan Mahmud",
+    "priority": "HIGH PRIORITY",
+    "status": "In Progress",
+    "createdAt": "2026-02-27"
+  },
+  {
+    "id": 1014,
+    "title": "Broken link on help page",
+    "description": "Help page contains links that lead to non-existent or broken pages, preventing access to support information easily.",
+    "customer": "Sabbir Rahman",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-27"
+  },
+  {
+    "id": 1015,
+    "title": "Data not syncing",
+    "description": "User data does not sync across multiple devices, causing inconsistencies in preferences, history, and application settings.",
+    "customer": "Mim Akter",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-28"
+  }
+]
