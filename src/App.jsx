@@ -44,6 +44,41 @@ function App() {
         </div>
       </div>
 
+      {/* Body */}
+      <div className='mx-[5%] pt-5'>
+        {/* Count Section  */}
+        <section className='flex flex-col md:flex-row items-center justify-center gap-10 '>
+          <div className='text-center py-16 w-full flex-1 rounded-md bg-linear-to-r from-[#632EE3] to-[#9F62F2]
+          relative
+          '>
+            <div className="absolute
+             
+             inset-0
+              bg-[url('./assets/vector1.png'),url('./assets/vector2.svg')]
+              bg-no-repeat
+              bg-position-[left_center,right_center]
+            ">
+
+            </div>
+            <h3 className='text-lg text-white mb-2'>In-Progress</h3>
+            <h1 className='text-5xl font-bold text-white'>0</h1>
+          </div>
+
+           
+          <div className='text-center w-full py-16 flex-1 rounded-md bg-linear-to-r from-[#54CF68] to-[#00827A] relative'>
+            <div className="absolute
+             inset-0
+              bg-[url('./assets/vector1.png'),url('./assets/vector2.svg')]
+              bg-no-repeat
+              bg-position-[left_center,right_center]
+            ">
+            </div>
+            <h3 className='text-lg text-white mb-2'>Resolved</h3>
+            <h1 className='text-5xl font-bold text-white'>0</h1>
+          </div>
+        </section >
+      </div >
+
 
     </>
   )
