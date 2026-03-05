@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
 
 function App() {
+  const [leftResolvedList, setLeftResolvedList] = useState([])
   const [resolvedList, setResolvedList] = useState([])
   const [resolved, setResolved] = useState(0)
   const [progressCount, setProgressCount] = useState(0)
@@ -17,6 +18,14 @@ function App() {
     return fetch('/ticketData.json').then(res => res.json());
   }, []);
 
+  
+  const handleClickToRemove = (ID) =>{
+    setLeftResolvedList(prev=>prev.filter(item=>item.id !==ID))
+   
+  }
+   console.log(leftResolvedList)
+
+   
   const handleCompleteBtn = (progressTicket) => {
     setTicket(prev => prev.filter(item => item.id !== progressTicket.id))
     setResolved(resolved + 1)
@@ -33,6 +42,7 @@ function App() {
       transition: Bounce,
     });
     setResolvedList(prev =>[...prev, progressTicket])
+    setLeftResolvedList(prev => [...prev, progressTicket])
   }
   function handleCard(card) {
     const exists = ticket.some(item => item.id === card.id)
@@ -168,7 +178,7 @@ function App() {
             <h2 className='font-bold text-gray-600 text-lg'>Customer Tickets</h2>
 
             <Suspense fallback={<Spinner></Spinner>}>
-              <Ticket handleCard={handleCard} ticketData={ticketData}></Ticket>
+              <Ticket resolvedList={resolvedList} handleCard={handleCard} ticketData={ticketData}></Ticket>
             </Suspense>
 
           </div>
@@ -193,14 +203,14 @@ function App() {
             <div>
               <h2 className='font-bold text-gray-600 text-lg'>Resolved Task</h2>
               {
-                resolvedList.length>0
-                ?resolvedList.map(ticketInfo=>{
+                leftResolvedList.length>0
+                ?leftResolvedList.map(ticketInfo=>{
                   return(
-                    <div>
+                    <div key={ticketInfo.id} className='bg-green-100 mt-3 p-2 rounded-lg border border-gray-300'>
                       <h3 className='font-bold text-md mb-3'>{ticketInfo.title}</h3>
                       <div className='flex justify-between'>
-                        <p className='bg-green-300'><FontAwesomeIcon className='bg-green-600 h-10 w-10' icon={faCheckCircle} />Completed</p>
-                        <button>Click to Remove</button>
+                        <p className=' flex items-center gap-2 p-3 text-green-500 font-semibold rounded-md '><FontAwesomeIcon className=' h-10 w-10' icon={faCheckCircle} />Completed</p>
+                        <button onClick={()=>handleClickToRemove(ticketInfo.id)} className='text-xs'>Click to Remove</button>
                       </div>
                     </div>
                   )

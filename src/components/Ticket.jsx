@@ -3,15 +3,21 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { use } from 'react';
 
-const Ticket = ({ ticketData, handleCard }) => {
+const Ticket = ({ ticketData, handleCard, resolvedList }) => {
 
     const alldata = use(ticketData);
-    // console.log(alldata)
+    const resolvedIDs = resolvedList.map(item=>item.id);
+
+    const removedResolvedList = alldata.filter(item=>!resolvedIDs.includes(item.id));
+    // console.log(removedResolvedList)
+    // console.log(resolvedIDs)
+    // const removedResolvedList = 
+    // console.log(resolvedList)
     return (
         <div className='grid grid-cols-2 gap-5'>
 
             {
-                alldata.map(data => {
+                removedResolvedList.map(data => {
                     // console.log(data)
                     return (
                         <div onClick={()=>{handleCard(data)}} key={data.id} className=' mt-2 p-3 rounded-lg bg-white'>
