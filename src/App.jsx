@@ -6,6 +6,7 @@ import Ticket from './components/Ticket'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
+import Footer from './components/Footer'
 
 function App() {
   const [leftResolvedList, setLeftResolvedList] = useState([])
@@ -225,6 +226,8 @@ function App() {
 
 
       </div >
+
+      <Footer></Footer>
 
 
     </div>
