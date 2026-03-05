@@ -173,9 +173,9 @@ function App() {
 
 
         {/* Ticket Show Section */}
-        <section className='mt-10 grid grid-cols-4'>
+        <section className='mt-10 grid lg:grid-cols-4'>
           {/* Customer Tickets */}
-          <div className='col-span-3'>
+          <div className='lg:col-span-3'>
             <h2 className='font-bold text-gray-600 text-lg'>Customer Tickets</h2>
 
             <Suspense fallback={<Spinner></Spinner>}>
@@ -185,7 +185,7 @@ function App() {
           </div>
 
           {/* Task Status */}
-          <div className='ml-5 bg-white p-2  '>
+          <div className='lg:ml-5 bg-white p-2  '>
             <div className='mb-5'>
               <h2 className='font-bold  text-gray-600 text-lg'>Task Status</h2>
               {ticket.length > 0

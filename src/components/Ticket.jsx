@@ -14,7 +14,7 @@ const Ticket = ({ ticketData, handleCard, resolvedList }) => {
     // const removedResolvedList = 
     // console.log(resolvedList)
     return (
-        <div className='grid grid-cols-2 gap-5'>
+        <div className='grid md:grid-cols-2  gap-5'>
 
             {
                 removedResolvedList.map(data => {
