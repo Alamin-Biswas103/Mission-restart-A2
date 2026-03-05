@@ -4,8 +4,12 @@ import './App.css'
 import Spinner from './components/Spinner'
 import Ticket from './components/Ticket'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
 
 function App() {
+  const [resolvedList, setResolvedList] = useState([])
+  const [resolved, setResolved] = useState(0)
   const [progressCount, setProgressCount] = useState(0)
   const [ticket, setTicket] = useState([])
 
@@ -13,17 +17,28 @@ function App() {
     return fetch('/ticketData.json').then(res => res.json());
   }, []);
 
+  const handleCompleteBtn = (progressTicket) => {
+    setTicket(prev => prev.filter(item => item.id !== progressTicket.id))
+    setResolved(resolved + 1)
+    setProgressCount(progressCount - 1)
+    toast.success(`Issue is completed`, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+    setResolvedList(prev =>[...prev, progressTicket])
+  }
   function handleCard(card) {
     const exists = ticket.some(item => item.id === card.id)
 
     if (exists) {
-      alert("data is in progress")
-    }
-    else {
-      setProgressCount(prev => prev + 1)
-      setTicket(prev => [...prev, card])
-      
-      toast.success(`In Progress id:${card.id}`, {
+      toast.error(`This ticket Already is in progress`, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -32,6 +47,22 @@ function App() {
         draggable: true,
         progress: undefined,
         theme: "colored",
+        transition: Bounce,
+      });
+    }
+    else {
+      setProgressCount(prev => prev + 1)
+      setTicket(prev => [...prev, card])
+
+      toast.success(`In Progress id:${card.id}`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
         transition: Bounce,
       });
     }
@@ -122,7 +153,7 @@ function App() {
             ">
             </div>
             <h3 className='text-lg text-white mb-2'>Resolved</h3>
-            <h1 className='text-5xl font-bold text-white'>0</h1>
+            <h1 className='text-5xl font-bold text-white'>{resolved}</h1>
           </div>
         </section >
 
@@ -152,7 +183,7 @@ function App() {
                   return (
                     <div className='bg-gray-100 mt-3 border-2 border-gray-300 p-4 rounded-md' key={item.id}>
                       <h3 className='font-bold text-md mb-3'>{item.title}</h3>
-                      <button className='btn btn-success text-white font-semibold bg-green-500 w-full'>Complete</button>
+                      <button onClick={() => handleCompleteBtn(item)} className='btn btn-success text-white font-semibold bg-green-500 w-full'>Complete</button>
                     </div>
                   )
                 })
@@ -161,7 +192,22 @@ function App() {
             </div>
             <div>
               <h2 className='font-bold text-gray-600 text-lg'>Resolved Task</h2>
-              <p className='text-gray-400'>No resolved tasks yet.</p>
+              {
+                resolvedList.length>0
+                ?resolvedList.map(ticketInfo=>{
+                  return(
+                    <div>
+                      <h3 className='font-bold text-md mb-3'>{ticketInfo.title}</h3>
+                      <div className='flex justify-between'>
+                        <p className='bg-green-300'><FontAwesomeIcon className='bg-green-600 h-10 w-10' icon={faCheckCircle} />Completed</p>
+                        <button>Click to Remove</button>
+                      </div>
+                    </div>
+                  )
+                })
+                :<p className='text-gray-400'>No resolved tasks yet.</p>
+              }
+              
             </div>
           </div>
 
