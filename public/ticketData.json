@@ -32,7 +32,7 @@
     "description": "Customer requests password reset but never receives email; possibly caused by spam filters or system delays.",
     "customer": "Tanvir Hasan",
     "priority": "MEDIUM PRIORITY",
-    "status": "Resolved",
+    "status": "Open",
     "createdAt": "2026-02-22"
   },
   {
@@ -68,7 +68,7 @@
     "description": "System-generated notification emails arrive several hours late, causing customers to miss timely updates and alerts.",
     "customer": "Arif Hossain",
     "priority": "LOW PRIORITY",
-    "status": "Resolved",
+    "status": "Open",
     "createdAt": "2026-02-24"
   },
   {
@@ -84,7 +84,7 @@
     "id": 1010,
     "title": "Incorrect invoice amount",
     "description": "Invoice total does not match order summary, creating confusion and trust issues for the customer immediately.",
-    "customer": "Jannatul Ferdous",
+    "customer": "Jannat Mim",
     "priority": "MEDIUM PRIORITY",
     "status": "Open",
     "createdAt": "2026-02-25"
@@ -104,7 +104,7 @@
     "description": "Logout option is missing in navigation menu, preventing users from securely signing out after finishing sessions.",
     "customer": "Rumana Begum",
     "priority": "LOW PRIORITY",
-    "status": "Resolved",
+    "status": "Open",
     "createdAt": "2026-02-26"
   },
   {

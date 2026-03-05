@@ -1,16 +1,59 @@
 
-import { Suspense } from 'react'
+import { Suspense, useMemo, useState } from 'react'
 import './App.css'
 import Spinner from './components/Spinner'
 import Ticket from './components/Ticket'
+import { Bounce, toast, ToastContainer } from 'react-toastify'
 
 function App() {
+  const [progressCount, setProgressCount] = useState(0)
+  const [ticket, setTicket] = useState([])
 
-  const ticketData = fetch('../public/ticketData.json')
-    .then(res => res.json())
+  const ticketData = useMemo(() => {
+    return fetch('/ticketData.json').then(res => res.json());
+  }, []);
+
+  function handleCard(card) {
+    const exists = ticket.some(item => item.id === card.id)
+
+    if (exists) {
+      alert("data is in progress")
+    }
+    else {
+      setProgressCount(prev => prev + 1)
+      setTicket(prev => [...prev, card])
+      
+      toast.success(`In Progress id:${card.id}`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  }
+
+  // console.log(ticket)
 
   return (
     <div className='max-w-400 mx-auto'>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
       {/* Navbar */}
       <div className="navbar bg-base-100 shadow-sm px-[5%] flex justify-between">
         <div className="">
@@ -66,7 +109,7 @@ function App() {
 
             </div>
             <h3 className='text-lg text-white mb-2'>In-Progress</h3>
-            <h1 className='text-5xl font-bold text-white'>0</h1>
+            <h1 className='text-5xl font-bold text-white'>{progressCount}</h1>
           </div>
 
 
@@ -94,15 +137,34 @@ function App() {
             <h2 className='font-bold text-gray-600 text-lg'>Customer Tickets</h2>
 
             <Suspense fallback={<Spinner></Spinner>}>
-              <Ticket ticketData={ticketData}></Ticket>
+              <Ticket handleCard={handleCard} ticketData={ticketData}></Ticket>
             </Suspense>
 
           </div>
 
           {/* Task Status */}
-          <div>
-            <h2 className='font-bold text-gray-600 text-lg'>Tast Status</h2>
+          <div className='ml-5 bg-white p-2  '>
+            <div className='mb-5'>
+              <h2 className='font-bold  text-gray-600 text-lg'>Task Status</h2>
+              {ticket.length > 0
+                ? ticket.map((item) => {
+                  // console.log(item)
+                  return (
+                    <div className='bg-gray-100 mt-3 border-2 border-gray-300 p-4 rounded-md' key={item.id}>
+                      <h3 className='font-bold text-md mb-3'>{item.title}</h3>
+                      <button className='btn btn-success text-white font-semibold bg-green-500 w-full'>Complete</button>
+                    </div>
+                  )
+                })
+                : <p className='text-gray-400'>Select a ticket to add to Task Status</p>}
+
+            </div>
+            <div>
+              <h2 className='font-bold text-gray-600 text-lg'>Resolved Task</h2>
+              <p className='text-gray-400'>No resolved tasks yet.</p>
+            </div>
           </div>
+
         </section>
 
 
